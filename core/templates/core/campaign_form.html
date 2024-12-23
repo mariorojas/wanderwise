@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block heading %}New campaign{% endblock heading %}
+
+{% block content %}
+<div id="campaign-form">
+    <form class="p-4 border rounded bg-body" method="post">{% csrf_token %}
+        {{ form | crispy }}
+        <button class="btn btn-primary" type="submit">Create</button>
+    </form>
+</div>
+{% endblock content %}

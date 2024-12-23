@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block heading %}Dashboard{% endblock heading %}
+
+{% block content %}
+<div id="dashboard">
+    <div id="dashboard-campaigns">
+        <h3 class="h4 mb-4">Campaigns</h3>
+        <div class="d-grid mb-3">
+            <a class="p-4 btn btn-link border border-2 rounded link-secondary" style="border-style:dashed !important;" href="{% url 'new-campaign' %}">
+                Add campaign
+            </a>
+        </div>
+        {% for c in campaigns %}
+            <div class="mb-3 p-4 border rounded bg-body">
+                <a class="fs-5 d-block text-truncate" href="{% url 'mention-list' c.slug %}">{{ c.name }}</a>
+                <div id="campaign-statistics" class="mt-2">
+                    <ul class="mb-0 list-inline small">
+                        <li class="pe-2 list-inline-item"><strong>Mentions:</strong> {{ c.num_of_mentions | intcomma }}</li>
+                        <li class="pe-2 list-inline-item"><strong>Replies:</strong> {{ c.num_of_replies | intcomma }}</li>
+                        <li class="pe-2 list-inline-item"><strong>Keywords:</strong> {{ c.keywords.count | intcomma }}</li>
+                        <li class="pe-2 list-inline-item"><strong>Created at:</strong> {{ c.created_at }}</li>
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

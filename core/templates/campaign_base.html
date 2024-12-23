@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block heading %}Campaign {% endblock heading %}
+
+{% block subheading %}{{ campaign.name }}{% endblock subheading %}
+
+{% block content %}
+<div id="campaign-related-content">
+    <div class="row gx-5">
+        <div class="pb-5 col-lg-2 col-md-3">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a class="nav-link {% if active_option == 'mentions' %}active{% endif %}" href="{% url 'mention-list' campaign.slug %}">Mentions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if active_option == 'replies' %}active{% endif %}" href="{% url 'reply-list' campaign.slug %}">Replies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if active_option == 'keywords' %}active{% endif %}" href="{% url 'keyword-list' campaign.slug %}">Keywords</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if active_option == 'settings' %}active{% endif %}" aria-current="page" href="{% url 'campaign-settings' campaign.slug %}">Settings</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-10 col-md-9">
+            <h3 class="h4 mb-4">{% block title %}{% endblock title %}</h3>
+            {% block main %}{% endblock main%}
+        </div>
+    </div>
+</div>
+{% endblock content %}

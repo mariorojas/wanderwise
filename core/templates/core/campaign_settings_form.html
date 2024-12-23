@@ -1,0 +1,18 @@
+{% extends 'campaign_base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Settings{% endblock title %}
+
+{% block main %}
+<div id="campaign-edit-form">
+    <form class="mb-5 p-4 border rounded bg-body" method="post">{% csrf_token %}
+        {{ form | crispy }}
+        <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+    <h3 class="h4 mb-4">Danger zone</h3>
+    <div id="campaign-danger-zone" class="mb-5 p-4 border rounded bg-body">
+        <a class="btn btn-danger" href="{% url 'delete-campaign' object.slug %}">Delete this campaign permanently</a>
+    </div>
+</div>
+{% endblock main %}

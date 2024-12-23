@@ -1,0 +1,12 @@
+{% extends 'campaign_base.html' %}
+
+{% block title %}Delete keyword{% endblock title %}
+
+{% block main %}
+<div id="delete-keyword-form">
+    <form class="p-4 border rounded bg-body" method="post">{% csrf_token %}
+        <p>Are you sure you want to delete the keyword <strong>{{ object.keyword }}</strong> permanently&quest;</p>
+        <button class="btn btn-danger" type="submit">Yes, delete it</button>
+    </form>
+</div>
+{% endblock main %}

@@ -1,0 +1,14 @@
+{% extends 'campaign_base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}New keyword{% endblock title %}
+
+{% block main %}
+<div id="keyword-form">
+    <form class="p-4 border rounded bg-body" method="post">{% csrf_token %}
+        {{ form | crispy }}
+        <button class="btn btn-primary" type="submit">Add</button>
+    </form>
+</div>
+{% endblock main %}
